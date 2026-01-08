@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Music HTML Web App</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Albums</h1>
+        <ul>
+            {% for album in albums %}
+                <article>
+                    <h2>Title: {{album.title}}</h2>
+                    <p>Released: {{album.release_year}}</p>
+                </article>
+                <!-- <li>
+                    <a href="/albums/{{album.id}}">{{album.title}}, {{album.release_year}}</a>
+                </li> -->
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

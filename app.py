@@ -1,11 +1,55 @@
 import os
 from flask import Flask, request, render_template
 from lib.database_connection import get_flask_database_connection
+from lib.album_repository import AlbumRepository
+from lib.artist_repository import ArtistRepository
+from lib.album import Album
+from lib.artist import Artist 
 
 # Create a new Flask app
 app = Flask(__name__)
 
 # == Your Routes Here ==
+# MUSIC HTML WEB APP ROUTES 
+
+# ALBUMS - Dynamic HTML
+# GET /albums
+    # Returns a list of albums
+@app.route('/albums', methods=['GET'])
+def get_albums():
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    albums = repository.all()
+    return render_template('music/album_index.html', albums=albums)
+
+
+# ALBUMS - static HTML
+# @app.route('/albums', methods=['POST'])
+# def post_albums():
+#     if 'title' not in request.form or 'release_year' not in request.form or 'artist_id' not in request.form:
+#         return "Please provide full information", 400
+#     connection = get_flask_database_connection(app)
+#     repository = AlbumRepository(connection)
+#     album = Album(
+#         None, 
+#         request.form['title'], 
+#         request.form['release_year'], 
+#         request.form['artist_id'])
+#     album = repository.create(album)
+#     return '', 200
+# # curl http://localhost:5001/albums 
+
+# @app.route('/albums', methods=['GET'])
+# def get_albums():
+#     connection = get_flask_database_connection(app)
+#     repository = AlbumRepository(connection)
+#     albums = repository.all()
+#     return "\n".join(
+#         f"{album}" for album in repository.all()
+#     )
+# curl -X POST -d "title=..%20..&release_year=...&artist_id=..." http://localhost:5001/albums
+# add info. %20 creates a space
+
 
 
 # == Example Code Below ==
