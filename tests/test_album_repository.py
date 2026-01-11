@@ -13,7 +13,7 @@ def test_get_all_albums(db_connection): # see conftest.py for more info
 
     assert albums == [
         Album(1,'Doolittle', 1989, 1),
-        Album(2, 'Surfer Rosa', 1988, 1),
+        Album(2, 'Surfa Rosa', 1988, 1),
         Album(3,'Waterloo', 1974, 2),
         Album(4, 'Super Trouper', 1980, 2),
         Album(5, 'Bossanova', 1990, 1),
@@ -49,7 +49,7 @@ def test_create_record(db_connection):
     result = repository.all()
     assert result == [
         Album(1,'Doolittle', 1989, 1),
-        Album(2, 'Surfer Rosa', 1988, 1),
+        Album(2, 'Surfa Rosa', 1988, 1),
         Album(3,'Waterloo', 1974, 2),
         Album(4, 'Super Trouper', 1980, 2),
         Album(5, 'Bossanova', 1990, 1),
@@ -75,7 +75,7 @@ def test_delete_record(db_connection):
     result = repository.all()
     assert result == [
         Album(1,'Doolittle', 1989, 1),
-        Album(2, 'Surfer Rosa', 1988, 1),
+        Album(2, 'Surfa Rosa', 1988, 1),
         Album(4, 'Super Trouper', 1980, 2),
         Album(5, 'Bossanova', 1990, 1),
         Album(6, 'Lover', 2019, 3),
