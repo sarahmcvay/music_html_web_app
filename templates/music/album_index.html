@@ -8,15 +8,20 @@
         <h1>Albums</h1>
         <ul>
             {% for album in albums %}
-                <article>
-                    <h2>Title: {{album.title}}</h2>
-                    <p>Released: {{album.release_year}}</p>
-                </article>
+                <li>
+                    <h3>
+                        <a href="/albums/{{album.id}}"> Title: {{album.title}}</a>
+                    </h3>
+                    <!-- <h3>Title: {{album.title}}</h3> -->
+                    <p class="t-release_year">Released: {{album.release_year}}</p>
+                </li>
                 <!-- <li>
                     <a href="/albums/{{album.id}}">{{album.title}}, {{album.release_year}}</a>
                 </li> -->
             {% endfor %}
         </ul>
-
+        <!-- This is a link to another page. -->
+        <!-- The browser will send `GET /books/new` when the user clicks this -->
+        <a href="/books/new">Add a new book</a>
     </body>
 </html>
