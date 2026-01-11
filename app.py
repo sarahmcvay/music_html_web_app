@@ -12,7 +12,25 @@ app = Flask(__name__)
 # == Your Routes Here ==
 # MUSIC HTML WEB APP ROUTES 
 
+@app.route("/")
+def get_main():
+    return render_template("music/album_main.html")
+
+@app.route("/about")
+def get_about():
+    return render_template("music/album_about.html")
+
 # ALBUMS - Dynamic HTML
+# GET /albums/1
+    # Returns one album
+    # Now linked to information via the show html file. 
+@app.route('/albums/<id>', methods=['GET']) #REMEBER Flask will not pass an ID unless it is part of the route. 
+def get_one_album(id):
+    connection = get_flask_database_connection(app)
+    repository = AlbumRepository(connection)
+    album = repository.find(id)
+    return render_template('music/album_show.html', album=album)
+
 # GET /albums
     # Returns a list of albums
 @app.route('/albums', methods=['GET'])
